@@ -1,0 +1,21 @@
+﻿body {background-color:lavenderblush;
+}
+a:link{
+    font-size:12px;
+       color:burlywood
+}
+a:visited {
+    font-size: 12px;
+    color:brown
+}
+a:hover {
+    font-size: 12px;
+    color:deeppink;
+    text-decoration:underline
+}
+
+.Container{background-color:aqua}
+.top{background-color:chocolate;height:50px}
+.left{background-color:azure;width:20%;float:left}
+.mainpart{background-color:snow;width:80%;float:left}
+.bottom{background-color:wheat}
