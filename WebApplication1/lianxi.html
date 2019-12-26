@@ -1,0 +1,557 @@
+﻿
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <base href="http://bkjw.whu.edu.cn:80/">
+    <meta id="i18n_pagename" content="index-common">
+    <meta http-equiv="Content-Type" content="no-cache;charset=gb2312">
+    <meta http-equiv="Cache-Control" content="no-cache,consolemust-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title name="school" class="i18n">武汉大学教务系统</title>
+    <link href="./css/style_common.css?v=2.002" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+
+    </script>
+    <script type="text/javascript" src="../js/CheckCookie.js?v=2.002"></script>
+    <script type="text/javascript" src="../js/jquery.tools.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.i18n.properties.js"></script>
+    <script type="text/javascript" src="../js/language.js"></script>
+    <script type="text/javascript" src="../js/md5.js?v=2.002"></script>
+
+    <style>
+        #sug {
+            list-style: none;
+            border: solid 1px #000;
+            margin-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            width: 250px;
+            background: white;
+        }
+
+            #sug li {
+                font-weight: normal;
+                font-color: black;
+                font-size: 12px;
+                padding-left: 2px;
+            }
+
+        .select {
+            background-color: #09f;
+            color: #ffffff;
+            cursor: default;
+        }
+
+        #top {
+            font-size: 18px;
+            line-height: 55px;
+            font-family: "宋体";
+            color: #626262;
+        }
+
+        .lan2 {
+            padding-top: 20px;
+            padding-left: 1000px;
+        }
+        /* 二维码相关css*/
+        ul, li {
+            list-style: none;
+            zoom: 1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .keifu {
+            position: fixed;
+            top: 10%;
+            right: 0;
+            width: 150px;
+            _position: absolute;
+            _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.bottom,10)||0)-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+            z-index: 990;
+        }
+
+        .keifu_tab {
+            width: 160px;
+        }
+
+        .icon_keifu {
+            width: 26px;
+            height: 100px;
+            font-size: 14px;
+            color: teal;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+            background-color: white;
+            text-align: center;
+            float: left;
+            position: relative;
+            display: none;
+            cursor: pointer;
+        }
+
+        .keifu_box {
+            float: left;
+            width: 150px;
+            border: solid white;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .keifu_tab img {
+            display: block;
+        }
+
+        .keifu_close {
+            display: block;
+            width: 11px;
+            height: 11px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        .keifu_con {
+            /*border-left:7px solid ; border-right:7px solid ; */
+            padding-top: 20px;
+            background: #fbfbfb;
+        }
+
+            .keifu_con li {
+            }
+
+            .keifu_con .weixin {
+                height: 136px;
+            }
+
+        .codeTitle {
+            text-align: center;
+            font-size: 16px;
+            color: teal;
+        }
+        /* 二维码相关css结束*/
+        .sure-button > button {
+            background: #2191ea;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            padding: 5px 25px;
+        }
+
+        #gonggao {
+            margin: 200px 20px 0px 50px;
+            width: 500px;
+            padding: 50px 100px 100px 100px;
+            font-size: 15px;
+            color: #FFFFFF;
+        }
+
+        .checkBrowser1 {
+            text-align: center;
+            height: 55px;
+            line-height: 55px;
+            width: 100%;
+            background-color: #FFFFBB;
+            font-size: 15px;
+        }
+
+        #captcha-img1 {
+            text-align: center;
+            display: none;
+            height: 55px;
+            line-height: 55px;
+            width: 100%;
+            background-color: #FFFFBB;
+            font-size: 15px;
+        }
+
+        #captcha-img3 {
+            text-align: center;
+            display: none;
+            height: 55px;
+            line-height: 55px;
+            width: 100%;
+            background-color: #FFFFBB;
+            font-size: 15px;
+        }
+
+        #captcha-img4 {
+            text-align: center;
+            display: none;
+            height: 55px;
+            line-height: 55px;
+            width: 100%;
+            background-color: #FFFFBB;
+            font-size: 15px;
+        }
+
+        #captcha-img {
+            text-align: center;
+            display: none;
+            height: 55px;
+            line-height: 55px;
+            width: 100%;
+            background-color: #FFFFBB;
+            font-size: 15px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        function getStuName(str)
+        {
+            var url = "/servlet/InputLenovo";
+            var parameter = "name="+str;
+            http_request = false;
+            if (window.XMLHttpRequest) { // Mozilla, Safari,...
+                http_request = new XMLHttpRequest();
+                if (http_request.overrideMimeType) {
+                    // set type accordingly to anticipated content type
+                    //http_request.overrideMimeType('text/xml');
+                    http_request.overrideMimeType('text/html');
+                }
+            } else if (window.ActiveXObject) { // IE
+                try {
+                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {}
+                }
+            }
+            if (!http_request) {
+                alert('Cannot create XMLHTTP instance');
+                return false;
+            }
+            http_request.open('POST', url, true);
+            http_request.onreadystatechange = function()
+            {
+                if(http_request.readyState==4&&http_request.status==200)
+                {
+                    var suggest=document.getElementById("suggest");
+                    suggest.innerHTML=http_request.responseText;
+                    //alert(XMLHttp.responseText);
+                    suggest.style.display="";
+                }
+            };
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.setRequestHeader("RequestType","ajax");
+            http_request.send(parameter);
+        }
+
+        function makePOSTRequest(url,parameters,action) {
+
+        }
+        $(function(){
+
+            checkCookie();
+            //myexplorer();
+            //
+
+            /*二维码js*/
+            var KF = $(".keifu");
+            var wkbox = $(".keifu_box");
+            var kf_close = $(".keifu .keifu_close");
+            var icon_keifu = $(".icon_keifu");
+            var kH = wkbox.height();
+            var kW = wkbox.width();
+            var wH = $(window).height();
+            KF.css({height:kH});
+            icon_keifu.css("top",parseInt((kH-100)/2));
+            var KF_top = (wH-kH)/2;
+            if(KF_top<0) KF_top=0;
+            KF.css("top",KF_top);
+
+            $(kf_close).click(function(){
+                KF.animate({width:"0"},200,function(){
+                    wkbox.hide();
+                    icon_keifu.show();
+                    KF.animate({width:26},300);
+                });
+            });
+            $(icon_keifu).click(function(){
+                $(this).hide();
+                wkbox.show();
+                KF.animate({width:kW},200);
+            });
+        });
+
+    </script>
+    <script>
+        function change(){            var qgrBVb1=window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x67\x65\x74\x45\x6c\x65\x6d\x65\x6e\x74\x42\x79\x49\x64"]("\x63\x61\x70\x74\x63\x68\x61\x2d\x69\x6d\x67\x31");            var uAjyqM2 = qgrBVb1["\x73\x72\x63"]["\x74\x6f\x53\x74\x72\x69\x6e\x67"]();            qgrBVb1["\x73\x72\x63"]=uAjyqM2["\x73\x75\x62\x73\x74\x72\x69\x6e\x67"](0,uAjyqM2["\x69\x6e\x64\x65\x78\x4f\x66"]("\x3f"))+"\x3f\x72\x64\x64\x64\x64\x3d"+window["\x4d\x61\x74\x68"]["\x72\x61\x6e\x64\x6f\x6d"]();            var VwWwo3=window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x67\x65\x74\x45\x6c\x65\x6d\x65\x6e\x74\x42\x79\x49\x64"]("\x63\x61\x70\x74\x63\x68\x61\x2d\x69\x6d\x67\x32");            var iIcRJmFF4 = VwWwo3["\x73\x72\x63"]["\x74\x6f\x53\x74\x72\x69\x6e\x67"]();            VwWwo3["\x73\x72\x63"]=iIcRJmFF4["\x73\x75\x62\x73\x74\x72\x69\x6e\x67"](0,iIcRJmFF4["\x69\x6e\x64\x65\x78\x4f\x66"]("\x3f"))+"\x3f\x72\x64\x64\x64\x64\x3d"+window["\x4d\x61\x74\x68"]["\x72\x61\x6e\x64\x6f\x6d"]();            var lwVYImWuR5=window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x67\x65\x74\x45\x6c\x65\x6d\x65\x6e\x74\x42\x79\x49\x64"]("\x63\x61\x70\x74\x63\x68\x61\x2d\x69\x6d\x67\x33");            var _Jnyeg6 = lwVYImWuR5["\x73\x72\x63"]["\x74\x6f\x53\x74\x72\x69\x6e\x67"]();            lwVYImWuR5["\x73\x72\x63"]=_Jnyeg6["\x73\x75\x62\x73\x74\x72\x69\x6e\x67"](0,_Jnyeg6["\x69\x6e\x64\x65\x78\x4f\x66"]("\x3f"))+"\x3f\x72\x64\x64\x64\x64\x3d"+window["\x4d\x61\x74\x68"]["\x72\x61\x6e\x64\x6f\x6d"]();            var pjKu7=window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x67\x65\x74\x45\x6c\x65\x6d\x65\x6e\x74\x42\x79\x49\x64"]("\x63\x61\x70\x74\x63\x68\x61\x2d\x69\x6d\x67\x34");            var rUkKGi8 = pjKu7["\x73\x72\x63"]["\x74\x6f\x53\x74\x72\x69\x6e\x67"]();            pjKu7["\x73\x72\x63"]=rUkKGi8["\x73\x75\x62\x73\x74\x72\x69\x6e\x67"](0,rUkKGi8["\x69\x6e\x64\x65\x78\x4f\x66"]("\x3f"))+"\x3f\x72\x64\x64\x64\x64\x3d"+window["\x4d\x61\x74\x68"]["\x72\x61\x6e\x64\x6f\x6d"]();        }
+
+        function beforsubmit(){
+            if (document.form1.pwd.value !=""){
+                document.form1.pwd.value = hex_md5(document.form1.pwd.value);}
+            var myDate = new Date();
+            document.form1.timestamp.value = myDate.getTime();
+        }
+    </script>
+    <script language="JavaScript">
+    if (window != top){
+        top.location.href=location.href;
+    }
+    </script>
+</head>
+
+
+<body class="greyBg">
+
+    <div id="container" style="background-color: #6B91B6;">
+        <div class="checkBrowser1">
+            <div style="margin: 0 auto;width: 100%;height: 100%;display: flex;align-items: center;padding-left: 20px;">
+                <div class="tishi" style="margin:1px;"></div>
+                <div style="float:left;width: 1300px;font-size: 14px;"> 各位同学：由于教务选课系统设计缺陷，导致学生选课出现困难，我们深表歉意并诚挚道歉。针对12月24日大量用户使用插件抢课的现象，经维护修复，目前系统正常运行中，请按本科生院的通知分批次选课。</div>
+                <div class="closeTip"><a style="text-decoration:underline;" href="javascript:void(0)" onclick="closeTip1()">关闭提醒</a></div>
+            </div>
+        </div>
+        <!--<div id="top" style="line-height:30px;clear: both;font-size:16px">
+            <div style="margin: 0 auto;width: 1100px;">
+            <div class="tishi">	</div>
+            <div>武汉大学本科教学管理系统软件已进行升级，本学期选课期间新老系统均可使用。选课处理规则和结果均相同，同学们可访问响应较快的服务器！</div>
+            老版本
+              <a style="font-color:#005197;font-size:18px;font:宋体" href="http://202.114.74.198/" target="_blank">
+            入口一
+              </a>
+               <a style="font-color:#005197;font-size:18px;font:宋体" href="http://202.114.74.199/"  target="_blank">
+            入口二
+              </a>
+                 </div>
+            </div>-->
+        <div id="main_contaier">
+            <div style="height: 55px;">
+                <div class="lan2">
+                    <select id="language">
+                        <option value="zh-CN" selected="selected">简体中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="loginBox">
+                <form action="/servlet/_34388039353c52" method="post" name="form1" onsubmit="return verification();">
+                    <input type="text" name="timestamp" hidden="">
+                    <table id="loginInputBox">
+                        <tbody>
+                            <tr>
+                                <td><div class="label i18n" name="user-name">用户名：</div></td>
+                                <!--
+                                    2013-3-6 邱霄峰 禁用了登录时的输入联想功能，该功能的实现在 js文件夹下的forindex.js
+                                <td colspan="2"><div class="inputWraper"><input name="id"    id="qxftest" tabindex="1"  onkeyup="loadDoc(this.value)"/></div>
+                                     -->
+                                <td colspan="2">
+                                    <div class="inputWraper"><input name="id" id="qxftest" tabindex="1"></div>
+                                    <div id="suggest" style="display:none;Z-index: 19998;position:absolute;"></div>
+                                </td>
+                                <td rowspan="2"><input type="submit" value="" id="loginBtn" tabindex="4" onclick="beforsubmit()"></td>
+                            </tr>
+                            <tr>
+                                <td><div class="label i18n" name="password">密&nbsp;&nbsp;码：</div></td>
+                                <td colspan="2"><div class="inputWraper"><input name="pwd" type="password" tabindex="2"></div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label i18n" name="verifycode">验证码：</div>
+                                    <img id="captcha-img" alt="验证码" src="/servlet/_sdf234s23f32f?v=4">
+                                </td>
+                                <td style="text-align: left;" colspan="3">
+                                    <div class="inputWraper" style="width:90px;float:left"><input name="xdvfb" tabindex="3"></div>
+                                    <div style="height:34px;margin:5px 5px 5px 5px;float:left;">
+                                        <img id="captcha-img1" class="show" name="eat" alt="验证码" src="/servlet/GenImg?v=1">
+                                        <img id="captcha-img2" class="hide" name="sleep" alt="验证码" src="/servlet/_51d5096830?v=2">
+                                        <img id="captcha-img3" class="hide" name="run" alt="验证码" src="/servlet/_4F6T314?v=3">
+                                        <img id="captcha-img4" class="show" name="fly" alt="验证码" src="/servlet/_sdf234s23f32f?v=4">
+                                    </div>
+                                    <div style="float:left;font-size:10px;margin-left:5px ; margin-top:15px;">
+                                        <a class="i18n change-captcha " onclick="change()" style="line-height:30px;margin-top:10px;font-size:13px;font:宋体;" href="javascript:void(0);" name="verifyingCode">看不清?</a>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+
+
+
+                            <tr><td colspan="4" style="text-align: center;"><br><font color="red" style="font-size: 12px;">会话超时，请重新登录<label id="alertp"></label></font></td></tr>
+                            <tr>
+                                <td style="text-align: right;font-size:13px;" colspan="4">
+                                    <a href="javascript:void(0);" class="i18n" name="forgetPassword" onclick="forget()">忘记密码?</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <!--<div id="gonggao">
+                            <div>各位同学：由于教务选课系统设计缺陷，导致学生选课出现困难，我们深表歉意并诚挚道歉。我们正在紧急维护修复, 尽快确保系统正常运行，确保同学们正常选课。</div>
+                        </div>
+                -->
+            </div>
+
+        </div>
+
+        <div id="footer" class="stu_footer">
+
+            <div class="first-part-footer">
+                <div class="first-part i18n" name="schoolname">武汉大学</div>
+                <div class="second-part">
+                    <p><span class="i18n" name="UndergraduateSchool">本科生院</span><span class="footer-oper i18n" style="margin-right:14px;" name="host">主持</span></p>
+                    <p><span class="i18n" name="ComputerScience">计算机学院、网络安全学院</span><span class="footer-oper i18n" name="made" style="margin-right:14px;">研制</span></p>
+                    <p><span class="i18n" name="NetworkInformationCenter">网络信息中心</span><span class="footer-oper i18n" name="Platformguarantee">平台保障</span></p>
+                </div>
+            </div>
+            <div class="border-right"></div>
+            <div class="second-part-footer">
+
+
+
+
+
+                <a style="cursor:pointer" href="common/problem.html" target="view_window">♦常见问题♦</a>
+                <p>文理学部QQ群:568127996  信息学部QQ群:787933082</p>
+                <p>医学部QQ群:787065132  工学部QQ群:788349427</p>
+
+            </div>
+        </div>
+
+    </div>
+    <!--
+            <div class="modal" id="prompt" style="position:absolute;z-index:1000;left:10px">
+               <div class="overlayContent" id="overlayContent">
+                   <iframe name="overLayFrame" id="overLayFrame" width="100%" frameborder="0"></iframe>
+               </div>
+           </div>
+           <input class="overlay" style="display:none;" type="button"/>
+            -->
+
+    <div class="keifu" style="height: 391.146px; top: 190.427px;">
+
+        <div class="icon_keifu " style="top: 145px;">展开二维码</div>
+        <div class="keifu_box">
+            <div><a href="javascript:void(0)" class="keifu_close">X</a></div>
+            <ul class="keifu_con">
+                <p class="codeTitle">安卓APP二维码</p>
+                <li class="weixin"><img src="images/android.png" width="126" height="126" alt="安卓APP二维码"></li>
+                <br>
+                <p class="codeTitle">苹果APP二维码</p>
+                <li class="weixin"><img src="images/iOS.png" width="126" height="126" alt="苹果APP二维码"></li>
+                <p class="codeTitle">打开手机下载教务APP吧~</p>
+            </ul>
+        </div>
+
+    </div>
+    <!--弹框内容-->
+    <div id="fade" class="" style="display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height:100%;
+	background-color: black;
+	z-index:1001;
+	-moz-opacity: 0.8;
+	opacity:0.3;
+	filter: alpha(opacity=50);"></div>
+    <div id="MyDiv" class="" style="display: none;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    width: 450px;
+    height:280px;
+    border: 2px solid #d3d3d3;
+    background-color: #f0efef;
+    z-index: 1002;">
+        <h2 style="color:#2191ea;padding: 30px;">请输入账号</h2>
+        <input class="forgetID" type="text" style="width: 230px;margin: 5px 0;height: 30px;line-height: 30px;">
+        <p>*在进入忘记密码页前请输入要找回密码的账号</p>
+        <div class="sure-button" style="margin-top:50px;">
+            <button type="submit" id="regBtn">确认</button> &nbsp;&nbsp;
+            <button id="cancelBtn">取消</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/customControl.js?v=2.002"></script>
+    <script type="text/javascript">
+    function closeTip1()
+    {
+        jQuery('.checkBrowser1').slideUp();
+    }
+    var myexplorer="";
+    var explorer = window.navigator.userAgent;
+    console.log(explorer)
+    if(explorer.indexOf("MSIE 6.0")>=1){  //如果浏览器为IE6
+        tip();
+        console.log("MSIE 6.0");
+    }else if (explorer.indexOf("MSIE 7.0")>=1){  //如果浏览器为IE7
+        tip();
+        console.log("MSIE 7.0");
+    }else if(explorer.indexOf("MSIE 8.0")>=1){
+        tip();
+        console.log("MSIE 8.0");
+    }else if(explorer.indexOf("MSIE 9.0")>=1){
+        tip();
+        console.log("MSIE 9.0");
+    }else if(explorer.indexOf("MSIE 10.0")>=1){
+        tip();
+        console.log("MSIE 10.0");
+    }else if(explorer.indexOf('Trident') > -1 && explorer.indexOf("rv:11.0") > -1){
+        tip();
+        console.log("MSIE 11.0");
+    }else if (explorer.indexOf("QQBrowser")>=0 || explorer.indexOf("QQ")>=0){
+        tip();
+        console.log("腾讯qq");
+    }else if(explorer.indexOf("Safari")>=0 && explorer.indexOf("MetaSr")>=0){
+        myexplorer="搜狗";
+
+    }else if(explorer.indexOf("LBBROWSER") >= 0){
+        tip();
+        myexplorer="猎豹";
+    }else if(explorer.indexOf("Firefox")>=0){
+        myexplorer="火狐";
+    }else if(explorer.indexOf("Maxthon")>=0){
+        tip();
+        myexplorer="遨游";
+    }else if(explorer.indexOf("Chrome")>=0){
+        myexplorer="谷歌（或360伪装）";
+    }else if(explorer.indexOf("Opera")>=0){
+        tip();
+        yexplorer="欧朋";
+    }else if (explorer.indexOf("TheWorld") >= 0){
+        tip();
+        myexplorer="世界之窗";
+    }else if(explorer.indexOf("Safari")>=0){
+        tip();
+        myexplorer="苹果";
+    }else{
+        tip();
+    }
+    //(!!window.ActiveXObject || "ActiveXObject" in window){//IE
+
+    console.log("浏览器"+myexplorer)
+
+    function tip(){
+        customAlert("检测到您的浏览器与系统不兼容，请您使用谷歌、360（极速模式）、火狐浏览器","提示");
+    }
+    function forget(){
+        var scrollHeight =document.body.scrollHeight; //文档高度
+        document.getElementById("fade").style.height=scrollHeight+'px';
+        document.getElementById("fade").style.width=document.body.scrollWidth+'px';
+        $("#fade").show();
+        $("#MyDiv").show();
+        $("#cancelBtn").click(function(){
+            $("#fade").hide();
+            $("#MyDiv").hide();
+        });
+
+        $("#regBtn").click(function(){
+            var id=$(".forgetID").val();
+            console.log("id="+id);
+            window.location.href = "../stu/forget.jsp?id="+id;
+        });
+
+    }
+    </script>
+
+
+</body>
+</html>

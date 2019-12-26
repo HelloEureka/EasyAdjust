@@ -1,0 +1,16 @@
+C:\Users\Lenovo\Desktop\INetWork\bin\Debug\INetWork.dll
+C:\Users\Lenovo\Desktop\INetWork\bin\Debug\INetWork.pdb
+C:\Users\Lenovo\Desktop\INetWork\bin\Debug\IMath.dll
+C:\Users\Lenovo\Desktop\INetWork\bin\Debug\IMath.pdb
+C:\Users\Lenovo\Desktop\INetWork\obj\Debug\INetWork.csprojAssemblyReference.cache
+C:\Users\Lenovo\Desktop\INetWork\obj\Debug\INetWork.csproj.CopyComplete
+C:\Users\Lenovo\Desktop\INetWork\obj\Debug\INetWork.dll
+C:\Users\Lenovo\Desktop\INetWork\obj\Debug\INetWork.pdb
+C:\Users\Lenovo\Desktop\FinalWork\INetWork\bin\Debug\INetWork.dll
+C:\Users\Lenovo\Desktop\FinalWork\INetWork\bin\Debug\INetWork.pdb
+C:\Users\Lenovo\Desktop\FinalWork\INetWork\bin\Debug\IMath.dll
+C:\Users\Lenovo\Desktop\FinalWork\INetWork\bin\Debug\IMath.pdb
+C:\Users\Lenovo\Desktop\FinalWork\INetWork\obj\Debug\INetWork.csprojAssemblyReference.cache
+C:\Users\Lenovo\Desktop\FinalWork\INetWork\obj\Debug\INetWork.csproj.CopyComplete
+C:\Users\Lenovo\Desktop\FinalWork\INetWork\obj\Debug\INetWork.dll
+C:\Users\Lenovo\Desktop\FinalWork\INetWork\obj\Debug\INetWork.pdb

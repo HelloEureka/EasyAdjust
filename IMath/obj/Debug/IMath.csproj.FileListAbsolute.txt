@@ -1,0 +1,5 @@
+C:\Users\Lenovo\Desktop\IMath\bin\Debug\IMath.dll
+C:\Users\Lenovo\Desktop\IMath\bin\Debug\IMath.pdb
+C:\Users\Lenovo\Desktop\IMath\obj\Debug\IMath.csprojAssemblyReference.cache
+C:\Users\Lenovo\Desktop\IMath\obj\Debug\IMath.dll
+C:\Users\Lenovo\Desktop\IMath\obj\Debug\IMath.pdb
